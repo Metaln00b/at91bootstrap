@@ -973,7 +973,7 @@ void load_1wire_info(void)
 	goto save_info;
 
 err:
-	dbg_info("\n1-Wire: Using defalt information\n");
+	dbg_info("\n1-Wire: Using default information\n");
 
 	sn = set_default_sn();
 	rev = set_default_rev();
