@@ -481,10 +481,12 @@ void at91_spi0_hw_init(void)
 }
 #endif /* #ifdef CONFIG_DATAFLASH */
 
+void _nandflash_hw_init(void);
 #ifdef CONFIG_SDCARD
 static void sdcard_set_of_name_board(char *of_name)
 {
 	strcat(of_name, "at91-sama5d3_acqua.dtb");
+    _nandflash_hw_init();
 }
 
 void at91_mci0_hw_init(void)
@@ -516,8 +518,7 @@ void at91_mci0_hw_init(void)
 }
 #endif /* #ifdef CONFIG_SDCARD */
 
-#ifdef CONFIG_NANDFLASH
-void nandflash_hw_init(void)
+void _nandflash_hw_init(void)
 {
 	/* Configure nand pins */
 	const struct pio_desc nand_pins[] = {
@@ -566,4 +567,7 @@ void nandflash_hw_init(void)
 		| AT91C_SMC_MODE_TDF_CYCLES(1),
 		(ATMEL_BASE_SMC + SMC_MODE3));
 }
+
+#ifdef CONFIG_NANDFLASH
+void nandflash_hw_init(void){ _nandflash_hw_init(void); }
 #endif /* #ifdef CONFIG_NANDFLASH */
