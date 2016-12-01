@@ -569,5 +569,5 @@ void _nandflash_hw_init(void)
 }
 
 #ifdef CONFIG_NANDFLASH
-void nandflash_hw_init(void){ _nandflash_hw_init(void); }
+void nandflash_hw_init(void){ _nandflash_hw_init(); }
 #endif /* #ifdef CONFIG_NANDFLASH */
